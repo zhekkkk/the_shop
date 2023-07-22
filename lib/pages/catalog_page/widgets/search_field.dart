@@ -13,9 +13,12 @@ class SearchField extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
           hintText: 'ПОИСК',
-          hintStyle: textTheme.bodyMedium
-              ?.copyWith(color: colorTheme.onBackground),
-          prefixIcon: const Icon(Icons.search),
+          hintStyle:
+              textTheme.bodyMedium?.copyWith(color: colorTheme.onBackground),
+          prefixIcon: Icon(
+            Icons.search,
+            color: colorTheme.onBackground,
+          ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
               width: 1,

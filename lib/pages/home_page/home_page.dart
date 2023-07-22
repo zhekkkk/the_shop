@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:the_shop/assets/icons/the_shop_icons_icons.dart';
 import 'package:the_shop/navigation/app_router.dart';
 
 @RoutePage()
@@ -8,6 +10,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorTheme = theme.colorScheme;
     return AutoTabsScaffold(
       lazyLoad: false,
       routes: const [
@@ -19,29 +23,53 @@ class HomePage extends StatelessWidget {
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           currentIndex: tabsRouter.activeIndex,
           onTap: tabsRouter.setActiveIndex,
-          unselectedItemColor: const Color(0xFFB8B8B8),
-          selectedItemColor: const Color(0xFF1f1f1f),
+          unselectedItemColor: colorTheme.outline,
+          selectedItemColor: colorTheme.secondary,
+          unselectedFontSize: 10,
+          selectedFontSize: 10,
+          showUnselectedLabels: true,
           items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.apps),
+            /*BottomNavigationBarItem(
+              icon: Icon(TheShopIcons.showcase_tab_icon),
               label: 'Витрина',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.manage_search_sharp),
+              icon: Icon(TheShopIcons.catalog_tab_icon),
               label: 'Каталог',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart),
+              icon: Icon(TheShopIcons.shopping_cart_tab_icon),
               label: 'Корзина',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.heart_broken),
+              icon: Icon(TheShopIcons.favorites_tab_icon),
               label: 'Избранное',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
+              icon: Icon(TheShopIcons.profile_tab_icon),
+              label: 'Профиль',
+            ),*/
+            BottomNavigationBarItem(
+              icon: Icon(Icons.apps_outlined),
+              label: 'Витрина',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.manage_search_outlined),
+              label: 'Каталог',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_bag_outlined),
+              label: 'Корзина',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.favorite_border),
+              label: 'Избранное',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_outline),
               label: 'Профиль',
             ),
           ],

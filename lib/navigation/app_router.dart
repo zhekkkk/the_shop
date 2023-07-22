@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:the_shop/models/product.dart';
 import 'package:the_shop/pages/catalog_page/catalog_page.dart';
 import 'package:the_shop/pages/showcase_page/showcase_page.dart';
 import 'package:the_shop/pages/favorites_page/favorites_page.dart';
@@ -37,7 +38,7 @@ class AppRouter extends _$AppRouter {
                   page: CatalogRoute.page,
                 ),
                 AutoRoute(
-                    page: ProductRoute.page,
+                  page: ProductRoute.page,
                 ),
               ],
             ),

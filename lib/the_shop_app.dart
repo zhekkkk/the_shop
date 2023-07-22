@@ -19,6 +19,14 @@ class TheShopApp extends StatelessWidget {
         colorScheme: lightColorScheme,
         scaffoldBackgroundColor: Colors.white,
         textTheme: TextTheme(
+          headlineMedium: GoogleFonts.montserrat(
+            fontSize: 20,
+            fontWeight: FontWeight.w400,
+          ),
+          headlineSmall: GoogleFonts.montserrat(
+            fontSize: 18,
+            fontWeight: FontWeight.w400,
+          ),
           bodyLarge: GoogleFonts.montserrat(
             fontSize: 16,
             fontWeight: FontWeight.w500,

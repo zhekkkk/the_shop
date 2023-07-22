@@ -64,9 +64,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ProductRoute.name: (routeData) {
+      final args = routeData.argsAs<ProductRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ProductPage(),
+        child: ProductPage(
+          key: args.key,
+          product: args.product,
+          productId: args.productId,
+        ),
       );
     },
     ProfileRoute.name: (routeData) {
@@ -204,16 +209,45 @@ class HomeRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ProductPage]
-class ProductRoute extends PageRouteInfo<void> {
-  const ProductRoute({List<PageRouteInfo>? children})
-      : super(
+class ProductRoute extends PageRouteInfo<ProductRouteArgs> {
+  ProductRoute({
+    Key? key,
+    required Product product,
+    required int productId,
+    List<PageRouteInfo>? children,
+  }) : super(
           ProductRoute.name,
+          args: ProductRouteArgs(
+            key: key,
+            product: product,
+            productId: productId,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ProductRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ProductRouteArgs> page =
+      PageInfo<ProductRouteArgs>(name);
+}
+
+class ProductRouteArgs {
+  const ProductRouteArgs({
+    this.key,
+    required this.product,
+    required this.productId,
+  });
+
+  final Key? key;
+
+  final Product product;
+
+  final int productId;
+
+  @override
+  String toString() {
+    return 'ProductRouteArgs{key: $key, product: $product, productId: $productId}';
+  }
 }
 
 /// generated route for
