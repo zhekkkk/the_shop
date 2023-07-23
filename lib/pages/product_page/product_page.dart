@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:the_shop/assets/icons/the_shop_icons_icons.dart';
 import 'package:the_shop/models/product.dart';
+import 'package:the_shop/util/price_format.dart';
 
 @RoutePage()
 class ProductPage extends StatelessWidget {
@@ -56,14 +57,14 @@ class ProductPage extends StatelessWidget {
                       'СКИДКА!  -${NumberFormat.decimalPatternDigits(decimalDigits: 2).format(discount)}%',
                       style: textTheme.bodySmall?.copyWith(fontSize: 18),
                     ),
-                  Spacer(),
+                  const Spacer(),
                   IconButton(
                     splashColor: Colors.transparent,
                     highlightColor: Colors.transparent,
-                    icon: true
-                        ? const Icon(Icons.favorite, color: Colors.red)
-                        : const Icon(Icons.favorite_border,
-                            color: Color(0xFF7d7d7d)),
+                    icon: const Icon(
+                        Icons.favorite_border,
+                        color: Color(0xFF7d7d7d)
+                    ),
                     onPressed: () {},
                   ),
                 ],
@@ -102,9 +103,7 @@ class ProductPage extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    NumberFormat.simpleCurrency(
-                            decimalDigits: 2, name: '\u20bd', locale: 'ru')
-                        .format(DecimalIntl(product.price)),
+                    PriceFormat.formatPrice(product.price),
                     style: textTheme.headlineSmall
                         ?.copyWith(color: colorTheme.secondary),
                   ),
@@ -113,9 +112,7 @@ class ProductPage extends StatelessWidget {
                   ),
                   if (oldPrice != null)
                     Text(
-                      NumberFormat.simpleCurrency(
-                              decimalDigits: 2, name: '\u20bd', locale: 'ru')
-                          .format(DecimalIntl(oldPrice)),
+                      PriceFormat.formatPrice(oldPrice),
                       style: textTheme.headlineSmall?.copyWith(
                         color: colorTheme.onBackground,
                         decoration: TextDecoration.lineThrough,
@@ -140,7 +137,7 @@ class ProductPage extends StatelessWidget {
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.shopping_cart_outlined),
+                        Icon(TheShopIcons.shopping_cart_tab_icon),
                         SizedBox(
                           width: 10,
                         ),
@@ -155,27 +152,6 @@ class ProductPage extends StatelessWidget {
               const Divider(
                 thickness: 2,
               ),
-
-              /*Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.fiber_manual_record,
-                    color: index == 0 ? Color(0xFF7d7d7d) : Color(0x807d7d7d),
-                    size: 7,
-                  ),
-                  Icon(
-                    Icons.fiber_manual_record,
-                    color: index == 1 ? Color(0xFF7d7d7d) : Color(0x807d7d7d),
-                    size: 7,
-                  ),
-                  Icon(
-                    Icons.fiber_manual_record,
-                    color: index == 2 ? Color(0xFF7d7d7d) : Color(0x807d7d7d),
-                    size: 7,
-                  ),
-                ],
-              ),*/
             ],
           ),
         ),

@@ -50,16 +50,21 @@ class _CatalogPageState extends State<CatalogPage> {
               future: _loadProducts(),
               builder: (context, snapshot) {
                 final products = snapshot.data;
-                if(products == null) {
+                if(snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if(snapshot.connectionState == ConnectionState.none) {
                   return const Center(
                     child: Text(
-                      'ошибочка вышла'
+                      'ошибка при загрузке товаров',
                     ),
                   );
                 }
                 return Expanded(
                   child: GridView.builder(
-                    itemCount: products.length,
+                    itemCount: products!.length,
                     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                       maxCrossAxisExtent: 200,
                       childAspectRatio: 164 / 250,

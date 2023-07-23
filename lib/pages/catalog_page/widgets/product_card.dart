@@ -9,6 +9,7 @@ import 'package:the_shop/models/product.dart';
 import 'package:decimal/decimal.dart';
 import 'package:decimal/intl.dart';
 import 'package:the_shop/pages/catalog_page/widgets/image_stack.dart';
+import 'package:the_shop/util/price_format.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
@@ -45,17 +46,13 @@ class ProductCard extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  NumberFormat.simpleCurrency(
-                          decimalDigits: 2, name: '\u20bd', locale: 'ru')
-                      .format(DecimalIntl(product.price)),
+                  PriceFormat.formatPrice(product.price),
                   style: textTheme.bodyMedium
                       ?.copyWith(color: colorTheme.onSurface),
                 ),
                 if (oldPrice != null)
                   Text(
-                    NumberFormat.simpleCurrency(
-                            decimalDigits: 2, name: '\u20bd', locale: 'ru')
-                        .format(DecimalIntl(oldPrice)),
+                    PriceFormat.formatPrice(oldPrice),
                     style: textTheme.bodySmall?.copyWith(
                       decoration: TextDecoration.lineThrough,
                       color: colorTheme.onSurface,
@@ -72,7 +69,7 @@ class ProductCard extends StatelessWidget {
                 backgroundColor: colorTheme.onPrimary,
                 elevation: 0,
                 child: const Icon(
-                  Icons.shopping_bag_outlined,
+                  TheShopIcons.shopping_cart_tab_icon,
                 ),
               ),
             ),
@@ -81,4 +78,6 @@ class ProductCard extends StatelessWidget {
       ],
     );
   }
+
+
 }

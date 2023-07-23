@@ -32,27 +32,42 @@ class HomePage extends StatelessWidget {
           selectedFontSize: 10,
           showUnselectedLabels: true,
           items: const [
-            /*BottomNavigationBarItem(
-              icon: Icon(TheShopIcons.showcase_tab_icon),
+            BottomNavigationBarItem(
+              icon: Icon(
+                TheShopIcons.showcase_tab_icon,
+                size: 35,
+              ),
               label: 'Витрина',
             ),
             BottomNavigationBarItem(
-              icon: Icon(TheShopIcons.catalog_tab_icon),
+              icon: Icon(
+                TheShopIcons.catalog_tab_icon,
+                size: 35,
+              ),
               label: 'Каталог',
             ),
             BottomNavigationBarItem(
-              icon: Icon(TheShopIcons.shopping_cart_tab_icon),
+              icon: Icon(
+                TheShopIcons.shopping_cart_tab_icon,
+                size: 35,
+              ),
               label: 'Корзина',
             ),
             BottomNavigationBarItem(
-              icon: Icon(TheShopIcons.favorites_tab_icon),
+              icon: Icon(
+                TheShopIcons.favorites_tab_icon,
+                size: 35,
+              ),
               label: 'Избранное',
             ),
             BottomNavigationBarItem(
-              icon: Icon(TheShopIcons.profile_tab_icon),
+              icon: Icon(
+                TheShopIcons.profile_tab_icon,
+                size: 35,
+              ),
               label: 'Профиль',
-            ),*/
-            BottomNavigationBarItem(
+            ),
+            /*BottomNavigationBarItem(
               icon: Icon(Icons.apps_outlined),
               label: 'Витрина',
             ),
@@ -71,7 +86,7 @@ class HomePage extends StatelessWidget {
             BottomNavigationBarItem(
               icon: Icon(Icons.person_outline),
               label: 'Профиль',
-            ),
+            ),*/
           ],
         );
       },

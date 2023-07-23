@@ -22,12 +22,8 @@ class TheShopIcons {
   static const String? _kFontPkg = null;
 
   static const IconData catalog_tab_icon = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData favorites_filled_icon = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData profile_tab_icon = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData shopping_cart_tab_icon = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData showcase_tab_icon = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData favorites_tab_icon = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData payment_card_icon = IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData payment_cash_icon = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData profile_tab_icon = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData shopping_cart_tab_icon = IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData search_icon = IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData showcase_tab_icon = IconData(0xe80a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
