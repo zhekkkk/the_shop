@@ -15,9 +15,17 @@ class ProductCard extends StatelessWidget {
   const ProductCard({
     super.key,
     required this.product,
+    required this.isFavorites,
+    this.onFavoriteTap,
+    this.onCartTap,
+    required this.isInCart,
   });
 
   final Product product;
+  final bool isFavorites;
+  final bool isInCart;
+  final VoidCallback? onFavoriteTap;
+  final VoidCallback? onCartTap;
 
   @override
   Widget build(BuildContext context) {
@@ -26,58 +34,74 @@ class ProductCard extends StatelessWidget {
     final textTheme = theme.textTheme;
     final oldPrice = product.oldPrice;
     final picture = product.picture;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ImageStack(picture: picture),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 10,
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ImageStack(
+            onFavoriteTap: onFavoriteTap,
+            isFavorites: isFavorites,
+            picture: picture,
           ),
-          child: Text(
-            product.name,
-            style: textTheme.bodySmall?.copyWith(color: colorTheme.secondary),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 10,
+            ),
+            child: Text(
+              product.name,
+              style: textTheme.bodySmall?.copyWith(color: colorTheme.secondary),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
-        ),
-        Row(
-          children: [
-            Column(
-              children: [
-                Text(
-                  PriceFormat.formatPrice(product.price),
-                  style: textTheme.bodyMedium
-                      ?.copyWith(color: colorTheme.onSurface),
-                ),
-                if (oldPrice != null)
+          Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Text(
-                    PriceFormat.formatPrice(oldPrice),
-                    style: textTheme.bodySmall?.copyWith(
-                      decoration: TextDecoration.lineThrough,
-                      color: colorTheme.onSurface,
-                    ),
+                    PriceFormat.formatPrice(product.price),
+                    style: textTheme.bodyMedium
+                        ?.copyWith(color: colorTheme.onSurface),
                   ),
-              ],
-            ),
-            const Spacer(),
-            SizedBox(
-              height: 48,
-              width: 48,
-              child: FloatingActionButton(
-                onPressed: () {},
-                backgroundColor: colorTheme.onPrimary,
-                elevation: 0,
-                child: const Icon(
-                  TheShopIcons.shopping_cart_tab_icon,
-                ),
+                  if (oldPrice != null)
+                    Text(
+                      PriceFormat.formatPrice(oldPrice),
+                      style: textTheme.bodySmall?.copyWith(
+                        decoration: TextDecoration.lineThrough,
+                        color: colorTheme.onSurface,
+                      ),
+                    ),
+                ],
               ),
-            ),
-          ],
-        )
-      ],
+              const Spacer(),
+              SizedBox(
+                height: 48,
+                width: 48,
+                child: !isInCart
+                    ? FloatingActionButton(
+                        onPressed: onCartTap,
+                        backgroundColor: colorTheme.onPrimary,
+                        elevation: 0,
+                        child: const Icon(
+                          TheShopIcons.shopping_cart_tab_icon,
+                        ),
+                      )
+                    : FloatingActionButton(
+                        onPressed: onCartTap,
+                        backgroundColor: colorTheme.primary,
+                        elevation: 2,
+                        child: Icon(
+                          Icons.leave_bags_at_home,
+                          color: colorTheme.onPrimary,
+                        ),
+                      ),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
-
-
 }

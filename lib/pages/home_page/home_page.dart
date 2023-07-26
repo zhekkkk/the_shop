@@ -67,26 +67,6 @@ class HomePage extends StatelessWidget {
               ),
               label: 'Профиль',
             ),
-            /*BottomNavigationBarItem(
-              icon: Icon(Icons.apps_outlined),
-              label: 'Витрина',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.manage_search_outlined),
-              label: 'Каталог',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_bag_outlined),
-              label: 'Корзина',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_border),
-              label: 'Избранное',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              label: 'Профиль',
-            ),*/
           ],
         );
       },

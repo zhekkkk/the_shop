@@ -71,6 +71,10 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           product: args.product,
           productId: args.productId,
+          onCartTap: args.onCartTap,
+          onFavoriteTap: args.onFavoriteTap,
+          isFavorites: args.isFavorites,
+          isInCart: args.isInCart,
         ),
       );
     },
@@ -214,6 +218,10 @@ class ProductRoute extends PageRouteInfo<ProductRouteArgs> {
     Key? key,
     required Product product,
     required int productId,
+    void Function()? onCartTap,
+    void Function()? onFavoriteTap,
+    required bool isFavorites,
+    required bool isInCart,
     List<PageRouteInfo>? children,
   }) : super(
           ProductRoute.name,
@@ -221,6 +229,10 @@ class ProductRoute extends PageRouteInfo<ProductRouteArgs> {
             key: key,
             product: product,
             productId: productId,
+            onCartTap: onCartTap,
+            onFavoriteTap: onFavoriteTap,
+            isFavorites: isFavorites,
+            isInCart: isInCart,
           ),
           initialChildren: children,
         );
@@ -236,6 +248,10 @@ class ProductRouteArgs {
     this.key,
     required this.product,
     required this.productId,
+    this.onCartTap,
+    this.onFavoriteTap,
+    required this.isFavorites,
+    required this.isInCart,
   });
 
   final Key? key;
@@ -244,9 +260,17 @@ class ProductRouteArgs {
 
   final int productId;
 
+  final void Function()? onCartTap;
+
+  final void Function()? onFavoriteTap;
+
+  final bool isFavorites;
+
+  final bool isInCart;
+
   @override
   String toString() {
-    return 'ProductRouteArgs{key: $key, product: $product, productId: $productId}';
+    return 'ProductRouteArgs{key: $key, product: $product, productId: $productId, onCartTap: $onCartTap, onFavoriteTap: $onFavoriteTap, isFavorites: $isFavorites, isInCart: $isInCart}';
   }
 }
 

@@ -12,6 +12,6 @@ class ShowcasePage extends StatefulWidget {
 class _ShowcasePageState extends State<ShowcasePage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold();
   }
 }

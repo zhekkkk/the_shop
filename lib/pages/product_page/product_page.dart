@@ -13,10 +13,18 @@ class ProductPage extends StatelessWidget {
     super.key,
     required this.product,
     required this.productId,
+    this.onCartTap,
+    this.onFavoriteTap,
+    required this.isFavorites,
+    required this.isInCart,
   });
 
   final Product product;
   final int productId;
+  final VoidCallback? onCartTap;
+  final VoidCallback? onFavoriteTap;
+  final bool isFavorites;
+  final bool isInCart;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +45,7 @@ class ProductPage extends StatelessWidget {
           color: Colors.black,
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: colorTheme.primary,
         elevation: 0,
         title: Text(
           product.brand != null ? 'бренд: ${product.brand}' : 'Страница товара',
@@ -61,11 +69,11 @@ class ProductPage extends StatelessWidget {
                   IconButton(
                     splashColor: Colors.transparent,
                     highlightColor: Colors.transparent,
-                    icon: const Icon(
-                        Icons.favorite_border,
-                        color: Color(0xFF7d7d7d)
-                    ),
-                    onPressed: () {},
+                    icon: isFavorites
+                        ? const Icon(Icons.favorite, color: Colors.red)
+                        : const Icon(Icons.favorite_border,
+                            color: Color(0xFF7d7d7d)),
+                    onPressed: onFavoriteTap,
                   ),
                 ],
               ),
@@ -127,7 +135,7 @@ class ProductPage extends StatelessWidget {
                 child: SizedBox(
                   height: 50,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: onCartTap,
                     style: TextButton.styleFrom(
                       textStyle: textTheme.bodySmall?.copyWith(
                           fontWeight: FontWeight.w500,
